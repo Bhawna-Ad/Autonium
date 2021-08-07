@@ -23,3 +23,9 @@ time.sleep(2)
 submit = driver.find_element_by_xpath("//button[@type='submit']").click()
 time.sleep(2)
 
+# searching for the button named Message
+all_buttons = driver.find_elements_by_tag_name("button")
+message_buttons = [btn for btn in all_buttons if btn.text == "Message"]
+
+# click on message button of first connection
+message_buttons[0].click()

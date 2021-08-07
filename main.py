@@ -29,3 +29,4 @@ message_buttons = [btn for btn in all_buttons if btn.text == "Message"]
 
 # click on message button of first connection
 message_buttons[0].click()
+

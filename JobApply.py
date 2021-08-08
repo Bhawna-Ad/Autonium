@@ -23,3 +23,15 @@ time.sleep(2)
 # loading jobs page
 driver.get("https://www.linkedin.com/jobs/")
 time.sleep(2)
+
+# finding the search field
+search_keywords = driver.find_element_by_xpath("//input[@id='jobs-search-box-keyword-id-ember40']")
+search_keywords.clear()
+# putting the job keyword
+search_keywords.send_keys("Software Engineer")
+
+# finding the location field
+search_location = driver.find_element_by_xpath("//input[@id='jobs-search-box-location-id-ember40']")
+search_location.clear()
+# putting the location
+search_location.send_keys("India")

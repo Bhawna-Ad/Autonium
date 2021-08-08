@@ -20,13 +20,40 @@ password.send_keys("user_password")
 time.sleep(2)
 
 # clicking on submit button
-submit = driver.find_element_by_xpath("//button[@type='submit']").click()
+submit = driver.find_element_by_xpath("//button[@type='submit']")
+driver.execute_script("arguments[0].click();", submit)
+time.sleep(2)
+
+# loading connections page
+driver.get("https://www.linkedin.com/search/results/people/?network=%5B%22F%22%5D&origin=FACETED_SEARCH&page=")
 time.sleep(2)
 
 # searching for the button named Message
 all_buttons = driver.find_elements_by_tag_name("button")
 message_buttons = [btn for btn in all_buttons if btn.text == "Message"]
 
-# click on message button of first connection
-message_buttons[0].click()
+# iterating through the message buttons and sending messages
+for i in range (0, len(message_buttons)):
+    # click on message button of first connection
+    driver.execute_script("arguments[0].click();", message_buttons[i])
+    time.sleep(2)
+
+    # click on messaging area of the message window
+    main_div = driver.find_element_by_xpath("//div[starts-with(@class, 'msg-form__msg-content-container')]")
+    driver.execute_script("arguments[0].click();", main_div)
+
+    # searching through the tags
+    paragraphs = driver.find_elements_by_tag_name("p")
+    # writing the message after the last sent
+    paragraphs[-5].send_keys("testing")
+    time.sleep(2)
+    submit = driver.find_element_by_xpath("//button[@type='submit']")
+    driver.execute_script("arguments[0].click();", submit)
+    time.sleep(2)
+
+    # closing the message window
+    close_button = driver.find_element_by_xpath(
+        "//button[starts-with(@data-control-name, 'overlay.close_conversation_window')]")
+    driver.execute_script("arguments[0].click();", close_button)
+    time.sleep(2)
 

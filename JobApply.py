@@ -20,5 +20,6 @@ submit = driver.find_element_by_xpath("//button[@type='submit']")
 driver.execute_script("arguments[0].click();", submit)
 time.sleep(2)
 
+# loading jobs page
 driver.get("https://www.linkedin.com/jobs/")
 time.sleep(2)

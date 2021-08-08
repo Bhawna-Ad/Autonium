@@ -35,3 +35,11 @@ search_location = driver.find_element_by_xpath("//input[@id='jobs-search-box-loc
 search_location.clear()
 # putting the location
 search_location.send_keys("India")
+time.sleep(2)
+
+# clicking on search button
+search = driver.find_element_by_xpath("//button[@type='button']")
+driver.execute_script("arguments[0].click();", search)
+time.sleep(2)
+
+

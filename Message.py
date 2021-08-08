@@ -4,15 +4,15 @@ import time
 from selenium import webdriver
 
 # loading linkedin in browser
-driver = webdriver.Chrome("C:/Users/.../chromedriver.exe")
+driver = webdriver.Chrome("C:/Users/.../chromedriver.exe")              # path to chromedriver
 driver.get("https://linkedin.com")
 
 # logging in to linkedin
 time.sleep(2)
 username = driver.find_element_by_xpath("//input[@name='session_key']")
 password = driver.find_element_by_xpath("//input[@name='session_password']")
-username.send_keys("user_email")
-password.send_keys("user_password")
+username.send_keys("user_email")                                        # Linkedin email
+password.send_keys("user_password")                                     # Linkedin password
 time.sleep(2)
 
 # clicking on submit button
@@ -72,5 +72,3 @@ for n in range(1, n_pages+1):
             "//button[starts-with(@data-control-name, 'overlay.close_conversation_window')]")
         driver.execute_script("arguments[0].click();", close_button)
         time.sleep(2)
-
-
